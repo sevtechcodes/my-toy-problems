@@ -11,7 +11,7 @@
  * The array may contain duplicate elements. If there are more than one equal elements in the array, 
  * the returned value can be the index of any one of the equal elements.
  * 
- * array.sort(function (a, b) {  //to sort the elements
+ * array.sort(function (a, b) {  //to sort the elements if not sorted
     return a - b;
 });
 
@@ -21,14 +21,14 @@ export function binarySearch(ar, el, compare_fn) {
 	let m = 0;
 	let n = ar.length - 1;
 	while (m <= n) {
-		let k = Math.floor((n + m) / 2);		// Find the middle index integer
-			let cmp = compare_fn(el, ar[k]);  // Compare the target element with the middle element
+		let mid = Math.floor((n + m) / 2);		// Find the middle index integer
+			let cmp = compare_fn(el, ar[mid]);  // Compare the target element with the middle element
 			if (cmp > 0) {
-					m = k + 1;  // Search in the right half
+					m = mid + 1;  // Search in the right half
 			} else if (cmp < 0) {
-					n = k - 1;  // Search in the left half
+					n = mid - 1;  // Search in the left half
 			} else {
-					return k;  // Element found
+					return mid;  // Element found
 			}
 	}
 	return -m - 1;  // Element not found
